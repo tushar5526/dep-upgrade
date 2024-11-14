@@ -1,0 +1,31 @@
+# .github/workflows/setup-and-test.yml
+name: Launchpad Setup and Test
+
+on:
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  setup-and-test:
+    runs-on: ubuntu-focal
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run setup and test script
+        run: |
+          bash script.sh
+
+      - name: Upgrade deps
+        run: |
+          cd launchpad
+          cd launchpad
+          bin/pip install --no-binary :all: pip --upgrade
+
+      - name: Run tests
+        run: |
+          apt-get -y install testrepository
+          cd launchpad
+          cd launchpad
+          testr init
+          testr run
