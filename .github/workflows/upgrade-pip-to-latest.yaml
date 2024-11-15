@@ -14,7 +14,7 @@ jobs:
 
       - name: Run setup and test script
         run: |
-          bash script.sh
+          bash setup.sh
 
       - name: Upgrade deps
         run: |
